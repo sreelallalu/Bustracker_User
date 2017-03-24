@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+<android.support.design.widget.TextInputLayout
+    android:layout_margin="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:paddingLeft="10dp"
+        android:textColorHint="@android:color/black"
+
+        android:id="@+id/user_name"
+        android:hint="name"
+        android:background="@drawable/borderline"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+        android:textColorHint="@android:color/black"
+            android:paddingLeft="10dp"
+
+            android:background="@drawable/borderline"
+            android:id="@+id/user_email"
+            android:hint="email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:textColorHint="@android:color/black"
+
+                android:background="@drawable/borderline"
+                android:id="@+id/user_phone"
+                android:hint="phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:textColorHint="@android:color/black"
+
+                android:background="@drawable/borderline"
+                android:id="@+id/user_pass"
+                android:hint="password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.v7.widget.AppCompatButton
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_margin="20dp"
+
+        android:text="Register"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/user_lo_button" />
+</LinearLayout>
+
+</ScrollView>
