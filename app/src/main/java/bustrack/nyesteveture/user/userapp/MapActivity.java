@@ -20,6 +20,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -44,13 +45,10 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Created by lalu on 1/30/2017.
- */
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
-    GoogleApiClient mGoogleApiClient;
+     GoogleApiClient mGoogleApiClient;
     TextView placec,del,kmte;
     String lat,log,dist,delsy;
     String tripcode,vehicleno;
@@ -60,7 +58,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         Intent i=getIntent();
-
         setContentView(R.layout.mapframe);
 
         tripcode=i.getStringExtra("tripcode");
@@ -86,7 +83,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
         mTimer = new Timer();
-        mTimer.schedule(timerTask, 2000, 10 * 5000);
+        mTimer.schedule(timerTask, 2000, 10 * 1000);
 
     }
     private Timer mTimer;
@@ -123,9 +120,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         String delay=gh.getString("delay");
                         Freshmm(lati,log,dis,delay);
 
+
                     }
                     else {
-                        Toast.makeText(MapActivity.this, "error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MapActivity.this, "Some Error Occured", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -175,19 +173,32 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         options.position(latLng);
 
         Geocoder geocoder = new Geocoder(MapActivity.this, Locale.getDefault());
-        List<Address> addresses,adress = null;
+
         try {
-            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+            List<Address> addresses   = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
             String cityName = addresses.get(0).getAddressLine(0);
+            String stateName = addresses.get(0).getAddressLine(1);
+            String countryName = addresses.get(0).getAddressLine(2);
+            Log.e("cityname",cityName);
+            Log.e("stateName",stateName);
+            Log.e("countryName",countryName);
             placec.setText(cityName);
             kmte.setText(dis);
             del.setText(delay);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Mark_Position(latLng);
 
 
-      mMap.addMarker(options);
+
+    }
+
+    private void Mark_Position(LatLng latLng) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude,latLng.longitude) , 14.0f) );
+        Marker melbourne = mMap.addMarker(new MarkerOptions()
+                .position(latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.favic)));
     }
 
     @Override
@@ -202,6 +213,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     == PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
+
             }
 
             Freshmm(lat,log,dist,delsy);
@@ -216,9 +228,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
  final LatLng MELBOURNE = new LatLng(-37.813, 144.962);
 
-        Marker melbourne = mMap.addMarker(new MarkerOptions()
+        /*Marker melbourne = mMap.addMarker(new MarkerOptions()
                 .position(MELBOURNE)
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));*/
     }
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)

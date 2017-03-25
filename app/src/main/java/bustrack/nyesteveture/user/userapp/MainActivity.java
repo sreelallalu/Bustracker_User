@@ -59,7 +59,7 @@ private Button check;
                                     String log=gh.getString("longitude");
                                     String dis=gh.getString("distance");
                                     String delay=gh.getString("delay");
-                                  Intent io=new Intent(MainActivity.this,MapActivity.class);
+                                    Intent io=new Intent(MainActivity.this,MapActivity.class);
                                     io.putExtra("lati",lati);
                                     io.putExtra("logi",log);
                                     io.putExtra("dis",dis);
@@ -72,8 +72,9 @@ private Button check;
                                     finish();
 
                                 }
+
                                 else {
-                                    Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Some Error Occured ", Toast.LENGTH_SHORT).show();
                                 }
 
 
