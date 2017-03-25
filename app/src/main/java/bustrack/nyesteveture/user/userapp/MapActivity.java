@@ -179,9 +179,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             String cityName = addresses.get(0).getAddressLine(0);
             String stateName = addresses.get(0).getAddressLine(1);
             String countryName = addresses.get(0).getAddressLine(2);
-            Log.e("cityname",cityName);
-            Log.e("stateName",stateName);
-            Log.e("countryName",countryName);
+//            Log.e("cityname",cityName);
+  //          Log.e("stateName",stateName);
+    //        Log.e("countryName",countryName);
            // placec.setText(cityName);
             kmte.setText(dis);
             del.setText(delay);
