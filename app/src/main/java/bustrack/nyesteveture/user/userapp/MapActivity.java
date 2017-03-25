@@ -72,7 +72,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         kmte=(TextView)findViewById(R.id.textViewkm);
 
 
-        placec.setText(i.getStringExtra(""));
+       // placec.setText(i.getStringExtra(""));
         del.setText(i.getStringExtra(""));
        // placec.setText(i.getStringExtra(""));
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
