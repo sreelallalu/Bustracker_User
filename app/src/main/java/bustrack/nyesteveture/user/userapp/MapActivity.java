@@ -182,7 +182,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Log.e("cityname",cityName);
             Log.e("stateName",stateName);
             Log.e("countryName",countryName);
-            placec.setText(cityName);
+           // placec.setText(cityName);
             kmte.setText(dis);
             del.setText(delay);
         } catch (IOException e) {
