@@ -67,14 +67,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         dist=i.getStringExtra("dis");
         delsy=i.getStringExtra("delay");
 
-        placec=(TextView)findViewById(R.id.textplace);
+      //  placec=(TextView)findViewById(R.id.textplace);
         del=(TextView)findViewById(R.id.textdelay);
         kmte=(TextView)findViewById(R.id.textViewkm);
 
 
         placec.setText(i.getStringExtra(""));
         del.setText(i.getStringExtra(""));
-        placec.setText(i.getStringExtra(""));
+       // placec.setText(i.getStringExtra(""));
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
